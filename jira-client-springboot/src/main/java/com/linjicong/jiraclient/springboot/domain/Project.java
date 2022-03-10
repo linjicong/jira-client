@@ -4,7 +4,6 @@ import lombok.Data;
 import org.springframework.lang.Nullable;
 
 import java.net.URI;
-import java.util.Collection;
 
 @Data
 public class Project {
@@ -14,8 +13,11 @@ public class Project {
     @Nullable
     private String name;
     private String key;
+    private String description;
+    private Lead lead;
     private AvatarUrls avatarUrls;
     private ProjectCategory projectCategory;
     private String projectTypeKey;
     private String expand;
+    private String[] projectKeys;
 }

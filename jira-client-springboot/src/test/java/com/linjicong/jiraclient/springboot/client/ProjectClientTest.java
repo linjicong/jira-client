@@ -1,5 +1,6 @@
 package com.linjicong.jiraclient.springboot.client;
 
+import cn.hutool.core.codec.Base64;
 import cn.hutool.json.JSONUtil;
 import com.linjicong.jiraclient.springboot.domain.Project;
 import lombok.extern.java.Log;
@@ -19,7 +20,12 @@ class ProjectClientTest {
 
     @Test
     void getAllProjects() {
-        List<Project> allProjects= projectClient.getAllProjects();
+        List<Project> allProjects= projectClient.getAllProjects("lead,projectKeys",null,null);
         System.out.println(JSONUtil.toJsonPrettyStr(allProjects));
+    }
+
+    @Test
+    void name() {
+        System.out.println(Base64.encode("linjicong@linjicong.atlassian.net:gC1yxCYRITq6yfGZuBn3C66B"));
     }
 }
