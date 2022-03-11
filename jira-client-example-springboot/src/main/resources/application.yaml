@@ -1,0 +1,4 @@
+jira:
+  url: http://192.168.132.128:18009
+  username: admin
+  password: admin

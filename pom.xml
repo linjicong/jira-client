@@ -50,9 +50,10 @@
     </properties>
 
     <modules>
-        <module>jira-client-springboot</module>
-        <module>jira-client-spring</module>
+        <module>jira-client-core</module>
         <module>jira-client-domain</module>
+        <module>jira-client-spring</module>
+        <module>jira-client-spring-boot-starter</module>
     </modules>
 
     <build>
