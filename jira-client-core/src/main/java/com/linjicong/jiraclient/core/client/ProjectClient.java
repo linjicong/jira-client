@@ -1,14 +1,17 @@
 package com.linjicong.jiraclient.core.client;
 
+import com.dtflys.forest.annotation.Address;
 import com.dtflys.forest.annotation.Get;
-import com.dtflys.forest.annotation.GetRequest;
+import com.dtflys.forest.annotation.JSONBody;
 import com.dtflys.forest.annotation.PostRequest;
-import com.linjicong.jiraclient.core.domain.CreateProjectParam;
 import com.linjicong.jiraclient.core.annotation.BasicAuthSimple;
+import com.linjicong.jiraclient.core.domain.CreateProjectParam;
 import com.linjicong.jiraclient.core.domain.Project;
+import com.linjicong.jiraclient.core.domain.Response;
 
 import java.util.List;
 
+@Address(basePath = "#{jira.url}")
 public interface ProjectClient {
     /**
      * 获取全部项目
@@ -17,17 +20,18 @@ public interface ProjectClient {
      * @param properties 项目属性
      * @return
      */
-    @Get("#{jira.url}/rest/api/2/project?expand={0}&recent={1}&properties={2}")
+    @Get("/rest/api/2/project?expand={0}&recent={1}&properties={2}")
     @BasicAuthSimple
     List<Project> getAllProjects(String expand, Integer recent, String properties);
 
     /**
      * 创建项目
-     * @param createProjectParam description,lead,url,projectKeys
+     * @param createProjectParam
+     * @see CreateProjectParam
      * @return
      */
-    @PostRequest("#{jira.url}/rest/api/2/project")
+    @PostRequest("/rest/api/2/project")
     @BasicAuthSimple
-    List<Project> createProject(CreateProjectParam createProjectParam);
+    Response createProject(@JSONBody CreateProjectParam createProjectParam);
 
 }
